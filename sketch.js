@@ -17,8 +17,14 @@ function setup() {
 	world = engine.world;
 
 	//Create the Bodies Here.
-	stone1 = new Stone(200,200,200,200);
+	stone1 = new Stone();
 
+	mango1 = new Mango(600,400);
+	mango2 = new Mango(650,400);
+	mango3 = new Mango(700,400);
+	mango4 = new Mango(750,400);
+
+	chain = new Constraints(stone1.body,{x:150,y:200});
 
 	Engine.run(engine);
   
@@ -33,6 +39,17 @@ function draw() {
 
   stone1.display();
   
+  mango1.display();
+  mango2.display();
+  mango3.display();
+  mango4.display();
+
   drawSprites();
  
+}
+function mouseDragged(){
+Matter.Body.setPosition(stone1.body,{x:mouseX,y:mouseY})
+}
+function MouseReleased(){
+constraint.fly();
 }
